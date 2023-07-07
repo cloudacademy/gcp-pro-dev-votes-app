@@ -18,9 +18,9 @@ export default function VotesButton() {
   const handleClick = () => {
     fetchVotes()
     const button = document.querySelector('button')
-    button.classList.add('pulse')
+    button?.classList.add('pulse')
     setTimeout(() => {
-      button.classList.remove('pulse')
+      button?.classList.remove('pulse')
     }, 500)
   }
 
