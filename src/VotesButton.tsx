@@ -3,9 +3,10 @@ import './VotesButton.css'
 
 export default function VotesButton() {
   const [count, setCount] = useState(0)
+  const fetchVotesUrl = import.meta.env.VITE_VOTES_API_URL
 
   const fetchVotes = () => {
-    fetch('http://localhost:3333/votes')
+    fetch(fetchVotesUrl)
       .then(response => response.json())
       .then(data => setCount(data.votes))
       .catch(error => console.error(error))
