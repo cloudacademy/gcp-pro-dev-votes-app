@@ -5,3 +5,4 @@ README.md
 .git*
 vite-env.d.ts
 cloudbuild.yaml
+k8s/*
