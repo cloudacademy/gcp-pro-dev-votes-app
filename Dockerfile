@@ -28,8 +28,11 @@ COPY --from=build /app/dist .
 # Install serve
 RUN npm install -g serve
 
+# Handle ingress path
+RUN ln -s /app/ /app/tally && sed -i 's%/assets/%/tally/assets/%g' index.html
+
 # Expose port 3001
 EXPOSE 3001
 
 # Start the application
-CMD ["serve", "-s", ".", "-p", "3001"]
+CMD ["serve", ".", "-p", "3001"]
