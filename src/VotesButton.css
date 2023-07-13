@@ -1,3 +1,7 @@
+.button-container {
+  height: 50px;
+}
+
 .pulse {
   animation: pulse 0.5s ease-in-out;
 }
@@ -12,4 +16,8 @@
   100% {
     transform: scale(1);
   }
+}
+
+.error {
+  color: red;
 }
