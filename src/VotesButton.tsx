@@ -12,10 +12,10 @@ export default function VotesButton() {
         if (!response.ok) {
           throw response
         }
-        response.json()
+        return response.json()
       })
       .then(data => setCount(data.votes))
-      .catch(error => {
+      .catch((error: Response) => {
         console.error(error)
         error.json().then(data => {
           setError(`Failed to get votes tally. Response: "${data.message}"`)
@@ -29,25 +29,25 @@ export default function VotesButton() {
       })
   }
 
-  useEffect(() => {
-    fetchVotes()
-  }, [])
+    useEffect(() => {
+      fetchVotes()
+    }, [])
 
-  const handleClick = () => {
-    fetchVotes()
-    const button = document.querySelector('button')
-    button?.classList.add('pulse')
-    setTimeout(() => {
-      button?.classList.remove('pulse')
-    }, 500)
+    const handleClick = () => {
+      fetchVotes()
+      const button = document.querySelector('button')
+      button?.classList.add('pulse')
+      setTimeout(() => {
+        button?.classList.remove('pulse')
+      }, 500)
+    }
+
+    return (
+      <div className='button-container'>
+        <button onClick={handleClick} title='Click to refresh'>
+          Vote count is {count}
+        </button>
+        {error && <div className="error">{error}</div>}
+      </div>
+    )
   }
-
-  return (
-    <div className='button-container'>
-      <button onClick={handleClick} title='Click to refresh'>
-        Vote count is {count}
-      </button>
-      {error && <div className="error">{error}</div>}
-    </div>
-  )
-}
