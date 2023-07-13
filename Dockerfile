@@ -29,7 +29,7 @@ COPY --from=build /app/dist .
 RUN npm install -g serve
 
 # Handle ingress path
-RUN ln -s /app/ /app/tally && sed -i 's%/assets/%/tally/assets/%g' index.html
+RUN ln -s /app/ /app/tally && sed -i 's%="/%="/tally/%g' index.html
 
 # Expose port 3001
 EXPOSE 3001
